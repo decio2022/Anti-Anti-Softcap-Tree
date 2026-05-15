@@ -5155,3 +5155,54 @@ sc+="Sc183: Reduce Ec8's Effect<br>"
 scf+="Sc183: 0.03,/25<br>" }
 return [sc.split("br").length-1,sc,scf]
 }
+
+addLayer("AS", {
+        layer: "AS", // This is assigned automatically, both to the layer and all upgrades, etc. Shown here so you know about it
+        name: "Anti-Softcap", // This is optional, only used in a few places, If absent it just uses the layer id.
+        symbol: "AS", // This appears on the layer's node. Default is the id with the first letter capitalized
+        position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+        startData() { return {
+            unlocked: true,
+			points: new Decimal(0),
+            best: new Decimal(0),
+            total: new Decimal(0),
+        }},
+        color: "#4BDC13",
+        requires: new Decimal("1.79e308"), // Can be a function that takes requirement increases into account
+        resource: "Anti-Softcap", // Name of prestige currency
+        baseResource: "E", // Name of resource prestige is based on
+        baseAmount() {return player.E.points}, // Get the current amount of baseResource
+        type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+        exponent: Decimal.reciprocate("10^^1e100"), // Prestige currency exponent
+        canBuyMax() {}, // Only needed for static layers with buy max
+        gainMult() { // Calculate the multiplier for main currency from bonuses
+            mult = new Decimal(1)
+            return mult
+        },
+        gainExp() { // Calculate the exponent on main currency from bonuses
+            return new Decimal(1)
+        },
+        row: 2, // Row the layer is in on the tree (0 is the first row)
+        milestones: {
+            0: {requirementDescription: "1 Anti-Softcap points",
+                done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
+                effectDescription: "Remove permamently Sc1(Sc mean Softcap)",
+            },
+            1: {requirementDescription: "2 Anti-Softcap points",
+                unlocked() {return hasMilestone(this.layer, 0)},
+                done() {return player[this.layer].best.gte(2)},
+                effectDescription: "Remove permamently Sc2",
+              },
+        },
+        doReset(layer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
+             layerDataReset("A", ["upgrades","milestones","clickables","buyables","challenges"])
+             layerDataReset("B", ["upgrades","milestones","clickables","buyables","challenges"])
+             layerDataReset("C", ["upgrades","milestones","clickables","buyables","challenges"])
+             layerDataReset("D", ["upgrades","milestones","clickables","buyables","challenges"])
+             layerDataReset("E", ["upgrades","milestones","clickables","buyables","challenges"])
+        },
+        layerShown() {if (player.E.points.eq("1.79e308")) return true}, // Condition for when layer appears on the tree
+        automate() {
+        }, // Do any automation inherent to this layer if appropriate
+        resetsNothing() {return false},
+})
