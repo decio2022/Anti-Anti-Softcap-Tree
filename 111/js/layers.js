@@ -143,7 +143,7 @@ introBox: {
   if(hasUpgrade("A",46)) eff=eff.mul("1e1000")
   if(hasUpgrade("A",54)) eff=eff.mul(3e4)
   
-  if(eff.gte(2)) eff=eff.div(2).pow(0.5).mul(2)//Sc1
+  if(eff.gte(2) && !hasMilestone("AS", 0)) eff=eff.div(2).pow(0.5).mul(2)//Sc1
   if(eff.gte(10)) eff=eff.div(10).pow(0.6).mul(10)//Sc4
   if(eff.gte(1e10)) eff=eff.div(1e10).pow(0.7).mul(1e10)//Sc32
   if(eff.gte(1e12)) eff=eff.div(1e12).pow(0.8).mul(1e12)//Sc35
@@ -4603,7 +4603,7 @@ addLayer("t", {
 
 function softcapCal() {//The most important function???
 let sc="";scf="";//Softcap and Softcap Formula
-if(uesc("A",11,n(2))) {
+if(uesc("A",11,n(2)) && !hasMilestone("AS", 0)) {
 sc+="Sc1: Reduce A1's Effect<br>"
 scf+="Sc1: 2,0.5<br>" }
 if(uesc("A",15,n(2))) {
