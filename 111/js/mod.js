@@ -134,8 +134,8 @@ var shitDown=false
 // Display extra things at the top of the page
 var displayThings = [
 	function() {
-	 let a="Current endgame: 1.79e308 E"
-	 if(isEndgame()) a=a+"<br>You are past endgame! E is capped at 1.79e308."
+	 let a="Current endgame: [redacted] Anti-Softcap points"
+	 if(isEndgame()) a=a+"<br>You are past endgame! The game may not be very balanced."
 	 if(gcs("t",12)) a=a+"<br>You have played the game for "+formatTime(player.timePlayed)+"."
 	 if(gcs("t",13)) a=a+"<br>Current FPS: "+format(1000/(Date.now()-player.time))+"."
 	 if(gcs("t",14)) a=a+"<br>Raw Points: "+format(getRawPointsGen())+"."
@@ -156,7 +156,7 @@ var displayThings = [
 ]
 // Determines when the game "ends"
 function isEndgame() {
-	return player.E.points.gte("1.79e308")
+	return player.AS.points.gte("67")
 }
 
 //<br> bilibili: @QqQe308
