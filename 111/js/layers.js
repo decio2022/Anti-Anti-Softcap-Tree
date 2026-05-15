@@ -5200,8 +5200,11 @@ addLayer("AS", {
              layerDataReset("D", ["upgrades","milestones","clickables","buyables","challenges"])
              layerDataReset("E", ["upgrades","milestones","clickables","buyables","challenges"])
         },
-        layerShown() {if (player.E.points.eq("1.79e308")) return true}, // Condition for when layer appears on the tree
+        layerShown() {if (player.E.unlocked) return true}, // Condition for when layer appears on the tree
         automate() {
         }, // Do any automation inherent to this layer if appropriate
-        resetsNothing() {return false}, 
+        resetsNothing() {return false},
+        unlocked(){
+          if ()
+        },
 })
