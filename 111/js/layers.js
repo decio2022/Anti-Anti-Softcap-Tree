@@ -5161,7 +5161,7 @@ addLayer("AS", {
         symbol: "AS", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         startData() { return {
-            unlocked: true,
+            unlocked: false,
 			points: new Decimal(0),
             best: new Decimal(0),
             total: new Decimal(0),
@@ -5203,5 +5203,5 @@ addLayer("AS", {
         layerShown() {if (player.E.points.eq("1.79e308")) return true}, // Condition for when layer appears on the tree
         automate() {
         }, // Do any automation inherent to this layer if appropriate
-        resetsNothing() {return false},
+        resetsNothing() {return false}, 
 })
