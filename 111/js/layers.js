@@ -5204,7 +5204,4 @@ addLayer("AS", {
         automate() {
         }, // Do any automation inherent to this layer if appropriate
         resetsNothing() {return false},
-        unlocked(){
-          if ()
-        },
 })
