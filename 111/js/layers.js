@@ -154,7 +154,7 @@ introBox: {
    cost:new Decimal(1),
    effectDisplay() {
     let a1eff = this.effect()
-    if ((!hasMilestone("AS", 0) && this.effect().gte(2)) || (hasMilestone("AS", 1) && this.effect().gte(10))) a1eff = a1eff + " (softcapped)"
+    if ((!hasMilestone("AS", 0) && this.effect().gte(2)) || (hasMilestone("AS", 0) && this.effect().gte(10))) a1eff = a1eff + " (softcapped)"
     return a1eff
    },
  },
