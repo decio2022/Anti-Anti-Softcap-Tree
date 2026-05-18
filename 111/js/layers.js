@@ -2309,7 +2309,7 @@ addLayer("E", {
    },
    21: {requirementDescription: "1.79e308 total E",
   done() {return player[this.layer].total.gte("1.79e308")}, 
-  effectDescription: "Unlock the next layer, F (coming soon).",
+  effectDescription: "Unlock Anti-Softcap layer, the only layer that TRULY will remove softcaps",
    },
   },
   canReset() {return !hasMilestone("E",10)},
@@ -5210,7 +5210,7 @@ addLayer("AS", {
              layerDataReset("E", ["upgrades","milestones","clickables","buyables","challenges"])
              layerDataReset("s", ["upgrades","milestones","clickables","buyables","challenges"])
         },
-        layerShown() {if (player.AS.unlocked) return true}, // Condition for when layer appears on the tree
+        layerShown() {if (player.AS.unlocked || player.E.points.gte("1.79e308")) return true}, // Condition for when layer appears on the tree
         automate() {
         }, // Do any automation inherent to this layer if appropriate
         resetsNothing() {return false},
