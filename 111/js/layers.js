@@ -184,7 +184,7 @@ introBox: {
   let eff= player.points.pow(p).add(1)
   if (inChallenge("A", 22))  eff = eff.pow(-2)
   if (hasUpgrade("s",14)) eff = eff.pow(ue("s",14))
-  if(eff.gte(2)) eff=eff.div(2).pow(0.5).mul(2)//Sc2
+  if(eff.gte(2) && !hasMilestone("AS", 1)) eff=eff.div(2).pow(0.5).mul(2)//Sc2
   if(eff.gte(100)) eff=eff.div(100).pow(0.5).mul(100)//Sc19
   if(eff.gte(1e6)) eff=eff.div(1e6).pow(0.5).mul(1e6)//Sc23
   return eff
@@ -4606,7 +4606,7 @@ let sc="";scf="";//Softcap and Softcap Formula
 if(uesc("A",11,n(2)) && !hasMilestone("AS", 0)) {
 sc+="Sc1: Reduce A1's Effect<br>"
 scf+="Sc1: 2,0.5<br>" }
-if(uesc("A",15,n(2))) {
+if(uesc("A",15,n(2)) && !hasMilestone("AS", 1)) {
 sc+="Sc2: Reduce A5's Effect<br>"
 scf+="Sc2: 2,0.5<br>" }
 if(tmp.A.gainMult.gte(2)) {
