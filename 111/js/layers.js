@@ -5208,6 +5208,7 @@ addLayer("AS", {
              layerDataReset("C", ["upgrades","milestones","clickables","buyables","challenges"])
              layerDataReset("D", ["upgrades","milestones","clickables","buyables","challenges"])
              layerDataReset("E", ["upgrades","milestones","clickables","buyables","challenges"])
+             layerDataReset("s", ["upgrades","milestones","clickables","buyables","challenges"])
         },
         layerShown() {if (player.AS.unlocked) return true}, // Condition for when layer appears on the tree
         automate() {
