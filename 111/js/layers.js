@@ -124,7 +124,7 @@ introBox: {
   upgrades: {
  11: {
    title:"A1",
-   description: function() {return "2x points <br>layer A total:<br>" + format(this.effect()) +"x"},
+   description: function() {return "2x points <br>layer A total:<br>"},
    tooltip:"All the upgrades that multiples points with a static multiplier in this layer are counted in this upgrade. Same as other layers.",
    effect(){
   let eff=n(1)
@@ -152,6 +152,11 @@ introBox: {
   return eff
    },
    cost:new Decimal(1),
+   effectDisplay() {
+    let a1eff = this.effect()
+    if ((!hasMilestone("AS", 0) && this.effect().gte(2)) || (hasMilestone("AS", 1) && this.effect().gte(10))) a1eff = a1eff + " (softcapped)"
+    return a1eff
+   },
  },
  12: {
    title:"A2",
