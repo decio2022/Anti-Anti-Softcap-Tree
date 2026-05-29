@@ -102,7 +102,7 @@ if(inChallenge("A",32)) gain=gain.log10()
 if(inChallenge("A",41)) gain=gain.tetrate(0.1)
 if(inChallenge("D",21)) gain=gain.slog()
 if(inChallenge("D",22)) gain=n(0)
-return gain.min("10^^10")
+return gain
 }
 function getPointGen() {
 	if(!canGenPoints())
