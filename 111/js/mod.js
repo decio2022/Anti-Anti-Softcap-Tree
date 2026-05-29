@@ -102,7 +102,7 @@ if(inChallenge("A",32)) gain=gain.log10()
 if(inChallenge("A",41)) gain=gain.tetrate(0.1)
 if(inChallenge("D",21)) gain=gain.slog()
 if(inChallenge("D",22)) gain=n(0)
-return gain
+return gain.min("ee100")
 }
 function getPointGen() {
 	if(!canGenPoints())
@@ -120,7 +120,7 @@ if(gain.max(1).log10().gte(300)) gain=n(10).pow(gain.log10().sub(299).pow(0.75).
 if(gain.max(1).log10().gte(500)) gain=n(10).pow(gain.log10().sub(499).pow(0.5).add(499))//Sc98
 if(inChallenge("D",11)) gain=n(10).pow(gain.max(1).log10().pow(0.1))//Sc72boosted
 
-	return gain
+	return gain.min("ee100")
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
