@@ -2209,7 +2209,7 @@ addLayer("E", {
    player.E.Ebpow=tmp.E.EbpowCal
    if (hasMilestone("E", 11))  player.E.Em = player.E.Em.add(tmp.E.emgain.mul(diff))
    if (hasMilestone("E", 16))  player.E.Ek = player.E.Ek.add(tmp.E.ekgain.mul(diff))
-   player.E.points=player.E.points.min("10^^3")
+   player.E.points=player.E.points.min("ee10")
   },
   clickables: {
    11: {
