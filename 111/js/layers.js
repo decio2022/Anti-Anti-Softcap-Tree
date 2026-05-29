@@ -2210,6 +2210,10 @@ addLayer("E", {
    if (hasMilestone("E", 11))  player.E.Em = player.E.Em.add(tmp.E.emgain.mul(diff))
    if (hasMilestone("E", 16))  player.E.Ek = player.E.Ek.add(tmp.E.ekgain.mul(diff))
    player.E.points=player.E.points.min("ee10")
+   player.A.points=player.A.points.min("ee10")
+   player.B.points=player.B.points.min("ee10")
+   player.C.points=player.C.points.min("ee10")
+   player.D.points=player.D.points.min("ee10")
   },
   clickables: {
    11: {
