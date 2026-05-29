@@ -72,7 +72,7 @@ introBox: {
  mult = mult.mul(buyableEffect("B",11))
 
  if(inChallenge("E",11)) mult=mult.max(10).tetrate(0.1)
- if(mult.gte(2)) mult=mult.div(2).pow(0.5).mul(2)//Sc3
+ if(mult.gte(2) && !hasMilestone("AS", 2)) mult=mult.div(2).pow(0.5).mul(2)//Sc3
  if(mult.gte(1e7)) mult=mult.div(1e7).pow(0.3).mul(1e7)//Sc48
  if(mult.gte(1e9)) mult=mult.div(1e9).pow(0.3).mul(1e9)//Sc59
  if(mult.gte(1e100)) mult=mult.div(1e100).pow(0.8).mul(1e100)//Sc89
@@ -4618,7 +4618,7 @@ scf+="Sc1: 2,0.5<br>" }
 if(uesc("A",15,n(2)) && !hasMilestone("AS", 1)) {
 sc+="Sc2: Reduce A5's Effect<br>"
 scf+="Sc2: 2,0.5<br>" }
-if(tmp.A.gainMult.gte(2)) {
+if(tmp.A.gainMult.gte(2) && !hasMilestone("AS", 2)) {
 sc+="Sc3: Reduce A's Gainmult<br>"
 scf+="Sc3: 2,0.5<br>" }
 if(uesc("A",11,n(10))) {
@@ -5194,13 +5194,18 @@ addLayer("AS", {
         milestones: {
             0: {requirementDescription: "1 Anti-Softcap points",
                 done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
-                effectDescription: "Remove permamently Sc1(Sc mean Softcap)",
+                effectDescription: "Remove permamently Sc1(Sc mean Softcap), also permamently keep softcap upgrades",
             },
             1: {requirementDescription: "2 Anti-Softcap points",
                 unlocked() {return hasMilestone(this.layer, 0)},
                 done() {return player[this.layer].best.gte(2)},
                 effectDescription: "Remove permamently Sc2",
-              },
+            },
+            2: {requirementDescription: "3 Anti-Softcap points",
+                unlocked() {return hasMilestone(this.layer, 1)},
+                done() {return player[this.layer].best.gte(3)},
+                effectDescription: "Remove permamently Sc3",
+            },
         },
         doReset(layer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
              layerDataReset("A", ["upgrades","milestones","clickables","buyables","challenges"])
