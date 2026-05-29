@@ -5194,7 +5194,7 @@ addLayer("AS", {
         milestones: {
             0: {requirementDescription: "1 Anti-Softcap points",
                 done() {return player[this.layer].best.gte(1)}, // Used to determine when to give the milestone
-                effectDescription: "Remove permamently Sc1(Sc mean Softcap), also permamently keep softcap upgrades",
+                effectDescription: "Remove permamently Sc1(Sc mean Softcap)",
             },
             1: {requirementDescription: "2 Anti-Softcap points",
                 unlocked() {return hasMilestone(this.layer, 0)},
@@ -5213,7 +5213,6 @@ addLayer("AS", {
              layerDataReset("C", ["upgrades","milestones","clickables","buyables","challenges"])
              layerDataReset("D", ["upgrades","milestones","clickables","buyables","challenges"])
              layerDataReset("E", ["upgrades","milestones","clickables","buyables","challenges"])
-             player.s.upgrades=[]
         },
         layerShown() {if (player.AS.unlocked || player.E.points.gte("1.79e308")) return true}, // Condition for when layer appears on the tree
         automate() {
